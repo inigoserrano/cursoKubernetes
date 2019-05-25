@@ -1,0 +1,25 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+  namespace: curso
+spec:
+  selector:
+    matchLabels:
+      app: mariadb
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers: 
+      - name: mariadb
+        image: curso/mariadb:latest
+        ports:
+        - containerPort: 3306
+      imagePullSecrets:
+        - name: regsecret
+
+
+

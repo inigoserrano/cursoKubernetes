@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: wildfly-service
+  namespace: curso  
+spec:
+  selector:
+    app: wildfly
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
