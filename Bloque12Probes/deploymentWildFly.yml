@@ -16,8 +16,21 @@ spec:
       containers:
       - name: wildfly
         image: inigoserrano/cursokuberneteswildfly:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /Aplicacion/livenessProbe
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /Aplicacion/readynessProbe
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3        
       imagePullSecrets:
         - name: regsecret
 
