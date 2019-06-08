@@ -1,0 +1,28 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: wildfly-deployment
+  namespace: curso  
+spec:
+  selector:
+    matchLabels:
+      app: wildfly
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: wildfly
+    spec:
+      containers:
+      - name: wildfly
+        image: inigoserrano/cursokuberneteswildfly:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "150Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+

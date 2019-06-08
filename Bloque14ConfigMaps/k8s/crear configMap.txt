@@ -1,0 +1,3 @@
+kubectl create configmap config-app --from-file=config.properties -n curso
+
+kubectl create secret generic db-user-pass --from-file=secretos.properties -n curso
